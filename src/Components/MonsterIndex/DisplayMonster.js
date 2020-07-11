@@ -33,7 +33,7 @@ constructor(props) {
       special_defense: "",
       magic_resistance: "",
       size: "small",
-      morale: "8(skittish)",
+      morale: "7(skittish)",
       xp: "0",
       summary: "something went wrong.  This is a known bug that occurs when refreshing a specific monster page",
       habitat: "Simply return here via the index link and it should work",
