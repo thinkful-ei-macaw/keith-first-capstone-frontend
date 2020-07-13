@@ -23,9 +23,44 @@ export default class App extends Component {
               
               this.setState({monsters})
             })
-            .catch(console.error)
-            }
-            
+            .catch(err => {
+              this.setState({
+                monsters: [{
+                  base_setting: "Error",
+                  monster_name: "Error Monster",
+                  climate: "Error Pages",
+                  frequency: "Unfortunately common",
+                  organization: "solitary",
+                  activity: "Unknown",
+                  diet: "Souls of developers",
+                  intelligence: "low (2-4)",
+                  treasure: "None",
+                  alignment: "chaotic evil",
+                  appearing: "1",
+                  ac: "10",
+                  movement: "12",
+                  hd: "1",
+                  thac0: "20 (+0)",
+                  attacks: "none",
+                  damage: "none",
+                  special_attacks: "",
+                  special_defense: "",
+                  magic_resistance: "",
+                  size: "small",
+                  morale: "7(skittish)",
+                  xp: "0",
+                  summary: "something went wrong.  This is a known bug that occurs when refreshing a specific monster page",
+                  habitat: "Simply return here via the index link and it should work",
+                  ecology: "I'm so sorry; I'm working on it"
+                }],
+                isError: err
+              })
+            })
+          }
+  
+  componentDidMount() {
+    this.getMonsters();
+  }
 
   
             
@@ -42,13 +77,8 @@ export default class App extends Component {
         <DataContext.Provider value={contextValue}>
          <Switch>
             <Route exact path='/'><View /></Route>
-            <Route exact path='/monster/:id' render={routeProps => {
-             
-              // Figures out which monster to link to
-              const foundMonster = this.state.monsters.find(m => m.id.toString() === routeProps.match.params.id)
-              return <DisplayMonster monster={foundMonster} />
-              
-            }}></Route>
+            <Route exact path='/monster/:id' component={DisplayMonster}
+               />
             <Route path='/' render={ () => (
               <Redirect to='/' />
             )} />

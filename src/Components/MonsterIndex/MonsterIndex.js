@@ -7,9 +7,9 @@ export default class MonsterIndex extends Component {
   static contextType = DataContext;
 
 
-  componentDidMount() {
-    this.context.getMonsters()
-    }
+  // componentDidMount() {
+  //   this.context.getMonsters()
+  //   }
     
    showNames = () => {
      if (this.context.monsters) {
