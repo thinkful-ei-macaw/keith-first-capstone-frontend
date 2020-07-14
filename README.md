@@ -1,68 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Maeglin
 
-## Available Scripts
+https://2e-capstone-client.vercel.app/
+---
 
-In the project directory, you can run:
+The Maeglin API uses 28 attributes.  These attributes are the categories used in the 
+2e monster manual.  These attributes are: 
+id
+base_setting
+monster_name
+climate
+frequency
+organization
+activity
+diet
+intelligence
+treasure
+alignment
+appearing
+ac
+movement
+hd
+thac0
+attacks
+damage
+special_attack
+special_defense
+magic_resistance
+size
+morale
+xp
+summary
+habitat
+ecology
+date_created
 
-### `npm start`
+A POST request does not need to include all of these attributes, as most monsters in the 
+2e game do not possess stats in every single category.  The required attributes are: 
+monster_name
+organization
+diet
+intelligence
+ac
+movement
+hd
+thac0
+attacks
+damage
+size
+summary
+habitat
+ecology
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+id and date_created are added automatically.
 
-### `npm test`
+Apart from id and date_created, every attribute is a string.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Non-required attributes that are not present return a null value.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src=postmanScreenshot1.PNG alt='screenshot of a post request' />
+This POST request is missing Special_Defense and Morale and has Magic_Resistance written 
+in as "null".  Because no required attributes are missing, you can see that it goes through as a 
+success, as seen here.  
+<img src=postmanScreenshot2.PNG alt='screenshot of a successful post request' />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This request is shown here.  Note how the missing attributes are all blank as well as the 
+attribute marked as null.
+<img src=finalAPIScreenshot.PNG alt='how it looks on page' />
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A GET request will simply return all of the entries.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Summary
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Maeglin is made using React, Node, Express, PostgreSQL, and, of course, CSS.
+React is used for the front end mainly for it's ability to use Components, State, and Context.
+Node is used for the back end, connecting the front end to the database.
+The tables in the database are made with PostgreSQL
+The styling is done with vanilla CSS
